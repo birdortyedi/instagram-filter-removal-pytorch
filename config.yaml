@@ -1,0 +1,98 @@
+wandb_version: 1
+
+DATASET:
+  desc: null
+  value:
+    MEAN:
+    - 0.5
+    - 0.5
+    - 0.5
+    NAME: IFFI
+    ROOT: ../../Downloads/IFFI-dataset/train
+    SIZE: 256
+    STD:
+    - 0.5
+    - 0.5
+    - 0.5
+    TEST_ROOT: ../../Downloads/IFFI-dataset/test
+MODEL:
+  desc: null
+  value:
+    D:
+      NAME: 1-ChOutputDiscriminator
+      NUM_CHANNELS: 32
+      NUM_CRITICS: 5
+      SOLVER:
+        BETAS:
+        - 0.5
+        - 0.9
+        DECAY_RATE: 0.5
+        LR: 0.001
+        SCHEDULER: []
+    IFR:
+      DESTYLER_CHANNELS: 32
+      NAME: InstaFilterRemovalNetwork
+      NUM_CHANNELS: 32
+      SOLVER:
+        BETAS:
+        - 0.5
+        - 0.9
+        DECAY_RATE: 0
+        LR: 0.0002
+        SCHEDULER: []
+    IS_TRAIN: true
+    NAME: ifrnet
+    NUM_CLASS: 17
+OPTIM:
+  desc: null
+  value:
+    ADVERSARIAL: 0.001
+    AUX: 0.5
+    GP: 10
+    MASK: 1
+    RECON: 1.4
+    SEMANTIC: 0.0001
+    TEXTURE: 0.001
+SYSTEM:
+  desc: null
+  value:
+    NUM_GPU: 2
+    NUM_WORKERS: 4
+TEST:
+  desc: null
+  value:
+    ABLATION: false
+    BATCH_SIZE: 64
+    IMG_ID: 52
+    OUTPUT_DIR: ./outputs
+    WEIGHTS: ''
+TRAIN:
+  desc: null
+  value:
+    BATCH_SIZE: 8
+    IS_TRAIN: true
+    LOG_INTERVAL: 100
+    NUM_TOTAL_STEP: 120000
+    RESUME: true
+    SAVE_DIR: ./weights
+    SAVE_INTERVAL: 1000
+    SHUFFLE: true
+    START_STEP: 0
+    TUNE: false
+    VISUALIZE_INTERVAL: 100
+WANDB:
+  desc: null
+  value:
+    ENTITY: vvgl-ozu
+    LOG_DIR: ./logs/ifrnet_IFFI_120000step_8bs_0.0002lr_2gpu_9run
+    NUM_ROW: 0
+    PROJECT_NAME: instagram-filter-removal
+    RUN: 9
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.9.1
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.6.9

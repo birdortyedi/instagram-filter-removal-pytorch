@@ -8,7 +8,7 @@ from modeling.build import build_model
 from utils.data_utils import linear_scaling
 
 cfg = get_cfg_defaults()
-cfg.MODEL.CKPT = "./weights/ifrnet_IFFI_180000step_8bs_0.0002lr_2gpu_10run/checkpoint-160000.pth"
+cfg.MODEL.CKPT = "weights/ifrnet.pth"
 net, _ = build_model(cfg)
 net = net.eval().cuda()
 vgg16 = models.vgg16(pretrained=True).features.eval().cuda()
@@ -33,11 +33,21 @@ def filter_removal(img):
         return out.squeeze(0).permute(1, 2, 0).cpu().numpy()
 
 
+title = "Instagram Filter Removal on Fashionable Images"
+description = "This is the demo for IFRNet, filter removal on fashionable images on Instagram. " \
+              "To use it, simply upload your filtered image, or click one of the examples to load them."
+article = "<p style='text-align: center'><a href=''>Instagram Filter Removal on Fashionable Images</a> | <a href='https://github.com/birdortyedi/instagram-filter-removal-pytorch'>Github Repo</a></p>"
+
 iface = gr.Interface(
     filter_removal,
     gr.inputs.Image(shape=(256, 256)),
     gr.outputs.Image(),
     capture_session=True,
+    title=title,
+    description=description,
+    article=article,
+    allow_flagging=False,
+    examples_per_page=17,
     examples=[
         ["images/examples/98_He-Fe.jpg"],
         ["images/examples/2_Brannan.jpg"],
@@ -58,4 +68,6 @@ iface = gr.Interface(
         ["images/examples/1_Clarendon.jpg"],
     ]
 )
-iface.launch()
+iface.launch(
+    share=True
+)

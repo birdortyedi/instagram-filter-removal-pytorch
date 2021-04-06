@@ -1,3 +1,5 @@
+import requests
+import os
 import gradio as gr
 import numpy as np
 import torch
@@ -7,7 +9,7 @@ from configs.default import get_cfg_defaults
 from modeling.build import build_model
 from utils.data_utils import linear_scaling
 
-import requests, os
+
 url = "https://www.dropbox.com/s/y97z812sxa1kvrg/ifrnet.pth?dl=1"
 r = requests.get(url, stream=True)
 if not os.path.exists("ifrnet.pth"):

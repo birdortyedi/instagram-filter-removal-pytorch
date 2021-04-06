@@ -7,11 +7,19 @@ from configs.default import get_cfg_defaults
 from modeling.build import build_model
 from utils.data_utils import linear_scaling
 
+import requests, os
+url = "https://www.dropbox.com/s/y97z812sxa1kvrg/ifrnet.pth?dl=1"
+r = requests.get(url, stream=True)
+if not os.path.exists("ifrnet.pth"):
+    with open("ifrnet.pth", 'wb') as f:
+        for data in r:
+            f.write(data)
+
 cfg = get_cfg_defaults()
-cfg.MODEL.CKPT = "weights/ifrnet.pth"
+cfg.MODEL.CKPT = "ifrnet.pth"
 net, _ = build_model(cfg)
-net = net.eval().cuda()
-vgg16 = models.vgg16(pretrained=True).features.eval().cuda()
+net = net.eval()
+vgg16 = models.vgg16(pretrained=True).features.eval()
 
 
 def load_checkpoints_from_ckpt(ckpt_path):
@@ -24,13 +32,13 @@ load_checkpoints_from_ckpt(cfg.MODEL.CKPT)
 
 def filter_removal(img):
     arr = np.expand_dims(np.transpose(img, (2, 0, 1)), axis=0)
-    arr = torch.tensor(arr).float().cuda() / 255.
+    arr = torch.tensor(arr).float() / 255.
     arr = linear_scaling(arr)
     with torch.no_grad():
         feat = vgg16(arr)
         out, _ = net(arr, feat)
         out = torch.clamp(out, max=1., min=0.)
-        return out.squeeze(0).permute(1, 2, 0).cpu().numpy()
+        return out.squeeze(0).permute(1, 2, 0).numpy()
 
 
 title = "Instagram Filter Removal on Fashionable Images"
@@ -69,5 +77,5 @@ iface = gr.Interface(
     ]
 )
 iface.launch(
-    share=True
+    # share=True
 )

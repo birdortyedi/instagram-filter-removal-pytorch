@@ -25,7 +25,7 @@ vgg16 = models.vgg16(pretrained=True).features.eval()
 
 
 def load_checkpoints_from_ckpt(ckpt_path):
-    checkpoints = torch.load(ckpt_path)
+    checkpoints = torch.load(ckpt_path, map_location=torch.device('cpu'))
     net.load_state_dict(checkpoints["ifr"])
 
 

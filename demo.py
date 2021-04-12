@@ -48,11 +48,10 @@ description = "This is the demo for IFRNet, filter removal on fashionable images
               "To use it, simply upload your filtered image, or click one of the examples to load them."
 article = "<p style='text-align: center'><a href=''>Instagram Filter Removal on Fashionable Images</a> | <a href='https://github.com/birdortyedi/instagram-filter-removal-pytorch'>Github Repo</a></p>"
 
-iface = gr.Interface(
+gr.Interface(
     filter_removal,
     gr.inputs.Image(shape=(256, 256)),
     gr.outputs.Image(),
-    capture_session=True,
     title=title,
     description=description,
     article=article,
@@ -77,7 +76,4 @@ iface = gr.Interface(
         ["images/examples/30_Perpetua.jpg"],
         ["images/examples/1_Clarendon.jpg"],
     ]
-)
-iface.launch(
-    share=True
-)
+).launch()

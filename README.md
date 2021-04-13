@@ -1,12 +1,12 @@
 # Instagram Filter Removal on Fashionable Images
 
-Demo App: 
+Demo App: https://gradio.app/g/birdortyedi/instagram-filter-removal-pytorch
 
 ![][results]
 
 > **Instagram Filter Removal on Fashionable Images**<br>
 > Furkan Kınlı, Barış Özcan, Furkan Kıraç <br>
-> *Submitted to NTIRE 2021 at CVPR2021* <br>
+> *Accepted to NTIRE 2021 at CVPR2021* <br>
 >
 >**Abstract:** Social media images are generally transformed by filtering to obtain aesthetically more pleasing appearances. However, CNNs generally fail to interpret both the image and its filtered version as the same in the visual analysis of social media images. We introduce Instagram Filter Removal Network (IFRNet) to mitigate the effects of image filters for social media analysis applications. To achieve this, we assume any filter applied to an image substantially injects a piece of additional style information to it, and we consider this problem as a reverse style transfer problem. The visual effects of filtering can be directly removed by adaptively normalizing external style information in each level of the encoder. Experiments demonstrate that IFRNet outperforms all compared methods in quantitative and qualitative comparisons, and has the ability to remove the visual effects to a great extent. Additionally, we present the filter classification performance of our proposed model, and analyze the dominant color estimation on the images unfiltered by all compared methods.
 
@@ -15,6 +15,10 @@ The official implementation of the paper titled "Instagram Filter Removal on Fas
 We propose a method for removing Instagram filters from the images by assuming the affects of filters as the style information.
 
 ## Updates
+**12/4/2021** Release of the demo app in Gradio.app
+
+**11/4/2021** Accepted to NTIRE2021 in conjunction with CVPR2021
+
 **5/4/2021:** Release of the code
 
 **23/3/2021:** Submission of the paper to NTIRE 2021 at CVPR2021

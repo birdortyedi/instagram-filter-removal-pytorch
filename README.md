@@ -68,7 +68,16 @@ python main.py --base_cfg config.yaml -t -w ifrnet.pth --dataset IFFI --dataset_
 ```
 
 ## Citation
-Not ready yet.
+```
+@misc{kınlı2021instagram,
+      title={Instagram Filter Removal on Fashionable Images}, 
+      author={Furkan Kınlı and Barış Özcan and Furkan Kıraç},
+      year={2021},
+      eprint={2104.05072},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
 
 ## Contacts
 Please feel free to open an issue or to send an e-mail to ```furkan.kinli@ozyegin.edu.tr```

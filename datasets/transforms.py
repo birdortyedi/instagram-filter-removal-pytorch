@@ -1,7 +1,8 @@
 import torch
 import numbers
 from typing import Tuple, Sequence
-from torchvision.transforms import functional as F
+from torchvision.transforms import functional as TF
+from torchvision import transforms
 from PIL import Image
 
 
@@ -46,24 +47,24 @@ class RandomCropTwoInstances:
 
     def __call__(self, img1, img2):
         if self.padding is not None:
-            img1 = F.pad(img1, self.padding, self.fill, self.padding_mode)
-            img2 = F.pad(img2, self.padding, self.fill, self.padding_mode)
+            img1 = TF.pad(img1, self.padding, self.fill, self.padding_mode)
+            img2 = TF.pad(img2, self.padding, self.fill, self.padding_mode)
 
         width, height = img1.size
         # pad the width if needed
         if self.pad_if_needed and width < self.size[1]:
             padding = [self.size[1] - width, 0]
-            img1 = F.pad(img1, padding, self.fill, self.padding_mode)
-            img2 = F.pad(img2, padding, self.fill, self.padding_mode)
+            img1 = TF.pad(img1, padding, self.fill, self.padding_mode)
+            img2 = TF.pad(img2, padding, self.fill, self.padding_mode)
         # pad the height if needed
         if self.pad_if_needed and height < self.size[0]:
             padding = [0, self.size[0] - height]
-            img1 = F.pad(img1, padding, self.fill, self.padding_mode)
-            img2 = F.pad(img2, padding, self.fill, self.padding_mode)
+            img1 = TF.pad(img1, padding, self.fill, self.padding_mode)
+            img2 = TF.pad(img2, padding, self.fill, self.padding_mode)
 
         i, j, h, w = self.get_params(img1, self.size)
 
-        return F.crop(img1, i, j, h, w), F.crop(img2, i, j, h, w)
+        return TF.crop(img1, i, j, h, w), TF.crop(img2, i, j, h, w)
 
     def __repr__(self):
         return self.__class__.__name__ + "(size={0}, padding={1})".format(self.size, self.padding)
@@ -81,8 +82,46 @@ class RandomCropTwoInstances:
         return size
 
 
+class NormalizeTwoInstances(torch.nn.Module):
+    """Normalize a tensor image with mean and standard deviation.
+    This transform does not support PIL Image.
+    Given mean: ``(mean[1],...,mean[n])`` and std: ``(std[1],..,std[n])`` for ``n``
+    channels, this transform will normalize each channel of the input
+    ``torch.*Tensor`` i.e.,
+    ``output[channel] = (input[channel] - mean[channel]) / std[channel]``
+
+    .. note::
+        This transform acts out of place, i.e., it does not mutate the input tensor.
+
+    Args:
+        mean (sequence): Sequence of means for each channel.
+        std (sequence): Sequence of standard deviations for each channel.
+        inplace(bool,optional): Bool to make this operation in-place.
+
+    """
+
+    def __init__(self, mean, std, inplace=False):
+        super().__init__()
+        self.mean = mean
+        self.std = std
+        self.inplace = inplace
+
+    def forward(self, tensor1, tensor2):
+        """
+        Args:
+            tensor (Tensor): Tensor image to be normalized.
+
+        Returns:
+            Tensor: Normalized Tensor image.
+        """
+        return TF.normalize(tensor1, self.mean, self.std, self.inplace), TF.normalize(tensor2, self.mean, self.std, self.inplace)
+
+    def __repr__(self):
+        return self.__class__.__name__ + '(mean={0}, std={1})'.format(self.mean, self.std)
+
+
 class ResizeTwoInstances(torch.nn.Module):
-    def __init__(self, size, interpolation=Image.BILINEAR):
+    def __init__(self, size, interpolation=transforms.InterpolationMode.BILINEAR):
         super().__init__()
         if not isinstance(size, (int, Sequence)):
             raise TypeError("Size should be int or sequence. Got {}".format(type(size)))
@@ -92,7 +131,7 @@ class ResizeTwoInstances(torch.nn.Module):
         self.interpolation = interpolation
 
     def forward(self, img1, img2):
-        return F.resize(img1, self.size, self.interpolation), F.resize(img2, self.size, self.interpolation)
+        return TF.resize(img1, self.size, self.interpolation), TF.resize(img2, self.size, self.interpolation)
 
     def __repr__(self):
         _pil_interpolation_to_str = {
@@ -113,7 +152,7 @@ class RandomHorizontalFlipTwoInstances:
 
     def __call__(self, img1, img2):
         if torch.rand(1) < self.p:
-            return F.hflip(img1), F.hflip(img2)
+            return TF.hflip(img1), TF.hflip(img2)
         return img1, img2
 
     def __repr__(self):
@@ -122,7 +161,7 @@ class RandomHorizontalFlipTwoInstances:
 
 class ToTensor:
     def __call__(self, img1, img2):
-        return F.to_tensor(img1), F.to_tensor(img2)
+        return TF.to_tensor(img1), TF.to_tensor(img2)
 
     def __repr__(self):
         return self.__class__.__name__ + '()'

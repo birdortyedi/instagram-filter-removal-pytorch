@@ -18,6 +18,14 @@ class BaseNetwork(nn.Module):
               'To see the architecture, do print(network).'
               % (type(self).__name__, num_params / 1000000))
 
+    def set_requires_grad(self, requires_grad=False):
+        """Set requies_grad=Fasle for all the networks to avoid unnecessary computations
+        Parameters:
+        requires_grad (bool) -- whether the networks require gradients or not
+        """
+        for param in self.parameters():
+            param.requires_grad = requires_grad
+
     def init_weights(self, init_type='xavier', gain=0.02):
         def init_func(m):
             classname = m.__class__.__name__

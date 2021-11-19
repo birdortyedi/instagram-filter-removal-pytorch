@@ -1,7 +1,5 @@
 # Instagram Filter Removal on Fashionable Images
 
-Demo App: https://gradio.app/g/birdortyedi/instagram-filter-removal-pytorch
-
 ![][results]
 
 > **Instagram Filter Removal on Fashionable Images**<br>
@@ -10,11 +8,15 @@ Demo App: https://gradio.app/g/birdortyedi/instagram-filter-removal-pytorch
 >
 >**Abstract:** Social media images are generally transformed by filtering to obtain aesthetically more pleasing appearances. However, CNNs generally fail to interpret both the image and its filtered version as the same in the visual analysis of social media images. We introduce Instagram Filter Removal Network (IFRNet) to mitigate the effects of image filters for social media analysis applications. To achieve this, we assume any filter applied to an image substantially injects a piece of additional style information to it, and we consider this problem as a reverse style transfer problem. The visual effects of filtering can be directly removed by adaptively normalizing external style information in each level of the encoder. Experiments demonstrate that IFRNet outperforms all compared methods in quantitative and qualitative comparisons, and has the ability to remove the visual effects to a great extent. Additionally, we present the filter classification performance of our proposed model, and analyze the dominant color estimation on the images unfiltered by all compared methods.
 
+###[Paper][paper] | [arXiv][arxiv] | [Demo][demo]
+
 ## Description
 The official implementation of the paper titled "Instagram Filter Removal on Fashionable Images".
 We propose a method for removing Instagram filters from the images by assuming the affects of filters as the style information.
 
 ## Updates
+**19/11/2021** Migrated our Gradip demo app to HuggingFace Spaces
+
 **12/4/2021** Release of the demo app in Gradio.app
 
 **11/4/2021** Accepted to NTIRE2021 in conjunction with CVPR2021
@@ -69,13 +71,13 @@ python main.py --base_cfg config.yaml -t -w ifrnet.pth --dataset IFFI --dataset_
 
 ## Citation
 ```
-@misc{kınlı2021instagram,
-      title={Instagram Filter Removal on Fashionable Images}, 
-      author={Furkan Kınlı and Barış Özcan and Furkan Kıraç},
-      year={2021},
-      eprint={2104.05072},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@InProceedings{Kinli_2021_CVPR,
+    author    = {Kinli, Furkan and Ozcan, Baris and Kirac, Furkan},
+    title     = {Instagram Filter Removal on Fashionable Images},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
+    month     = {June},
+    year      = {2021},
+    pages     = {736-745}
 }
 ```
 
@@ -84,3 +86,6 @@ Please feel free to open an issue or to send an e-mail to ```furkan.kinli@ozyegi
 
 [results]: images/paper/results.png
 [model]: images/paper/IFRNet.png
+[paper]: https://openaccess.thecvf.com/content/CVPR2021W/NTIRE/papers/Kinli_Instagram_Filter_Removal_on_Fashionable_Images_CVPRW_2021_paper.pdf
+[arxiv]: https://arxiv.org/abs/2104.05072
+[demo]: https://huggingface.co/spaces/birdortyedi/instagram-filter-removal

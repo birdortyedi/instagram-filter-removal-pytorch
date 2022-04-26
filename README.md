@@ -45,13 +45,28 @@ contains 600 images and with their 16 different filtered versions for each. In p
 
 We are planning to collect more images with all possible filters on Instagram.
 
-Raw images: https://www.dropbox.com/s/t9o0uakcjt6i3rn/IFFI-dataset-raw.zip?dl=0
+Training set: 
+* Dataset: https://www.dropbox.com/s/bjd6dwg6y3x58hq/IFFI-dataset-train.zip?dl=1
+* 512px version: https://www.dropbox.com/s/t2w9qznj75dtcni/IFFI-dataset-lr-train.zip?dl=1
+* pix2pix-compatible version: TBA
+* CycleGAN-compatible version: TBA
+
+Test set (validation for challenge): 
+* Dataset: https://www.dropbox.com/s/h29ujxyvy6v8sju/IFFI-dataset-test.zip?dl=1
+* 512px version: https://www.dropbox.com/s/ahgknsqyt1i0nef/IFFI-dataset-lr-test.zip?dl=1
+* pix2pix-compatible version: TBA
+* CycleGAN-compatible version: TBA
+
+Private test set for challenge: TBA
+
+<!--Raw images: https://www.dropbox.com/s/t9o0uakcjt6i3rn/IFFI-dataset-raw.zip?dl=0
 
 Dataset: https://www.dropbox.com/s/4kk06sog5zbk728/IFFI-dataset.zip?dl=0
 
 Pix2Pix-compatible version: https://www.dropbox.com/s/87k949epwpuq3r0/IFFI-dataset-pix2pix.zip?dl=0
 
 CycleGAN-compatible version: https://www.dropbox.com/s/cb0xtmpavkyjbik/IFFI-dataset-cycleGAN.zip?dl=0
+-->
 
 ## Training
 

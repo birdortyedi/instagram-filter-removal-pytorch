@@ -45,7 +45,7 @@ contains 600 images and with their 16 different filtered versions for each. In p
 
 We are planning to collect more images with all possible filters on Instagram.
 
-Training set: 
+<!-- Training set: 
 * Dataset: https://www.dropbox.com/s/rn3285qmzypoyuc/IFFI-dataset-train.zip?dl=1
 * 512px version: https://www.dropbox.com/s/l7vlt1xuxw8z331/IFFI-dataset-lr-train.zip?dl=1
 * pix2pix-compatible version: https://www.dropbox.com/s/2sarho9rg1mvg9n/IFFI-dataset-pix2pix-train.zip?dl=1
@@ -57,16 +57,16 @@ Test set (validation for challenge):
 * pix2pix-compatible version: https://www.dropbox.com/s/zr4zkgj0cck77vx/IFFI-dataset-pix2pix-test.zip?dl=1
 * pix2pix-compatible 512px version: https://www.dropbox.com/s/u6uhw2wffal7shq/IFFI-dataset-pix2pix-lr-test.zip?dl=1
 
-Private test set for challenge: TBA
+Private test set for challenge: TBA -->
 
-<!--Raw images: https://www.dropbox.com/s/t9o0uakcjt6i3rn/IFFI-dataset-raw.zip?dl=0
+Raw images: https://www.dropbox.com/s/t9o0uakcjt6i3rn/IFFI-dataset-raw.zip?dl=0
 
 Dataset: https://www.dropbox.com/s/4kk06sog5zbk728/IFFI-dataset.zip?dl=0
 
 Pix2Pix-compatible version: https://www.dropbox.com/s/87k949epwpuq3r0/IFFI-dataset-pix2pix.zip?dl=0
 
 CycleGAN-compatible version: https://www.dropbox.com/s/cb0xtmpavkyjbik/IFFI-dataset-cycleGAN.zip?dl=0
--->
+
 
 ## Training
 

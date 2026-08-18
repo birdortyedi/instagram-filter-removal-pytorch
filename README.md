@@ -59,14 +59,12 @@ Test set (validation for challenge):
 
 Private test set for challenge: TBA -->
 
-Raw images: https://www.dropbox.com/s/t9o0uakcjt6i3rn/IFFI-dataset-raw.zip?dl=0
+[Raw images][iffi-raw] | [Dataset][iffi-dataset] | [Pix2Pix-compatible version][iffi-pix2pix] | [CycleGAN-compatible version][iffi-cycleGAN]
 
-Dataset: https://www.dropbox.com/s/4kk06sog5zbk728/IFFI-dataset.zip?dl=0
-
-Pix2Pix-compatible version: https://www.dropbox.com/s/87k949epwpuq3r0/IFFI-dataset-pix2pix.zip?dl=0
-
-CycleGAN-compatible version: https://www.dropbox.com/s/cb0xtmpavkyjbik/IFFI-dataset-cycleGAN.zip?dl=0
-
+[iffi-raw]: https://drive.google.com/file/d/1IQs3YB8p6S5Ytcme72HftnJmah4fBQPc/view?usp=drive_link
+[iffi-dataset]: https://drive.google.com/file/d/1ES-VIN39cX6De6zZqh3ZUdcRpgiNArk9/view?usp=drive_link
+[iffi-pix2pix]: https://drive.google.com/file/d/1nsizb025c4wt5lWeHo1bt4L1JKYK3GzM/view?usp=drive_link
+[iffi-cycleGAN]: https://drive.google.com/file/d/1e3RxcAEa15Pv5ZcegVc_dG_j_ievIB22/view?usp=drive_link
 
 ## Training
 
